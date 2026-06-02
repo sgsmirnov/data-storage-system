@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--  Activiti Workflow Delegate beans -->
+    <bean id="baseInvitationDelegate" class="ru.atum.alfresco.ecm.Dummy">
+    </bean>
+
+    <bean id="AcceptNominatedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="ApproveModeratedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="CancelNominatedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="RejectModeratedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="RejectNominatedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="SendNominatedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="SendNominatedInviteAddDirectDelegate" class="ru.atum.alfresco.ecm.Dummy" />
+
+    <bean id="SendModeratedInviteDelegate" class="ru.atum.alfresco.ecm.Dummy">
+    </bean>
+</beans>

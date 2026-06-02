@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- убрал только зависимость на resetPasswordService -->
+    <bean id="people" class="ru.atum.alfresco.ecm.rest.api.impl.PeopleImpl">
+        <property name="nodes" ref="Nodes" />
+        <property name="sites" ref="sites" />
+        <property name="renditions" ref="Renditions" />
+        <property name="siteService" ref="SiteService" />
+        <property name="nodeService" ref="NodeService" />
+        <property name="personService" ref="PersonService" />
+        <property name="authenticationService" ref="AuthenticationService" />
+        <property name="authorityService" ref="AuthorityService" />
+        <property name="contentUsageService" ref="contentUsageImpl" />
+        <property name="contentService" ref="ContentService" />
+        <property name="thumbnailService" ref="ThumbnailService" />
+        <!-- added by sgsmirnov
+        <property name="resetPasswordService" ref="resetPasswordService" />
+        -->
+        <property name="userRegistrySynchronizer" ref="userRegistrySynchronizer" />
+        <property name="allowImmutableEnabledUpdate" value="${allow.immutable.user.enabled.status.update}" />
+    </bean>
+
+    <!-- выпиливание бинов где используется activiti -->
+    <bean id="deployments" class="ru.atum.alfresco.ecm.Dummy"/>
+
+    <bean id="processDefinitions" class="ru.atum.alfresco.ecm.Dummy"/>
+
+</beans>

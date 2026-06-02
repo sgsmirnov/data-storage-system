@@ -1,0 +1,76 @@
+version: '3.4'
+services:
+  data-storage-system-share:
+    image: alfresco-share-data-storage-system:development
+    build:
+      dockerfile: ./Dockerfile
+      context: ../../../data-storage-system-share-docker/target
+    environment:
+      CATALINA_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8888"
+      REPO_HOST: data-storage-system-acs
+      REPO_PORT: 8080
+    ports:
+      - "${share.port}:8080"
+      - "${share.debug.port}:8888"
+  data-storage-system-acs:
+    image: alfresco-content-services-data-storage-system:development
+    build:
+      dockerfile: ./Dockerfile
+      context: ../../../data-storage-system-platform-docker/target
+    environment:
+      JAVA_TOOL_OPTIONS: "${keystore.settings}"
+      JAVA_OPTS: "
+        -Dsolr.secureComms=secret
+        -Dsolr.sharedSecret=secret
+        -Dmessaging.broker.url=\"failover:(nio://data-storage-system-activemq:61616)?timeout=3000&jms.useCompression=true\"
+        "
+      CATALINA_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8888"
+    ports:
+      - "${acs.port}:8080"
+      - "${acs.debug.port}:8888"
+    volumes:
+      - data-storage-system-acs-volume:/usr/local/tomcat/alf_data
+    depends_on:
+      - data-storage-system-postgres
+  data-storage-system-postgres:
+    image: postgres:16.5
+    environment:
+      POSTGRES_DB: alfresco
+      POSTGRES_USER: alfresco
+      POSTGRES_PASSWORD: alfresco
+    command: postgres -c max_connections=300 -c log_min_messages=LOG
+    ports:
+      - "${postgres.port}:5432"
+    volumes:
+      - data-storage-system-db-volume:/var/lib/postgresql/data
+  data-storage-system-ass:
+    image: alfresco/alfresco-search-services:2.0.15
+    environment:
+      SOLR_ALFRESCO_HOST: data-storage-system-acs
+      SOLR_ALFRESCO_PORT: 8080
+      SOLR_SOLR_HOST: data-storage-system-ass
+      SOLR_SOLR_PORT: 8983
+      SOLR_CREATE_ALFRESCO_DEFAULTS: alfresco,archive
+      ALFRESCO_SECURE_COMMS: "secret"
+      JAVA_TOOL_OPTIONS: "-Dalfresco.secureComms.secret=secret"
+    ports:
+      - "8983:8983"
+    volumes:
+      - data-storage-system-ass-volume:/opt/alfresco-search-services/contentstore
+      - data-storage-system-ass-volume:/opt/alfresco-search-services/data
+  data-storage-system-activemq:
+      image: alfresco/alfresco-activemq:5.18-jre17-rockylinux8
+      mem_limit: 1g
+      ports:
+        - 8161:8161 # Web Console
+        - 5672:5672 # AMQP
+        - 61616:61616 # OpenWire
+        - 61613:61613 # STOMP
+
+volumes:
+  data-storage-system-acs-volume:
+    external: true
+  data-storage-system-db-volume:
+    external: true
+  data-storage-system-ass-volume:
+    external: true
