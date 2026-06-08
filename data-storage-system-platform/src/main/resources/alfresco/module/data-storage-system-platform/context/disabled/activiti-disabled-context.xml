@@ -10,13 +10,10 @@
                            http://www.springframework.org/schema/tx      http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- Activiti requires a wrapped DataSource -->
-    <bean id="wrappedDataSource"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="wrappedDataSource" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Additional datasource to use for Activit's ID-generator -->
-    <bean id="activitiIdGeneratorDataSource" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiIdGeneratorDataSource" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Reverting to baseDefaultDataSource, with max 1 connection available -->
     <bean id="defaultActivitiIdGeneratorDataSource" parent="baseDefaultDataSource">
@@ -43,115 +40,80 @@
           class="ru.atum.alfresco.ecm.Dummy">
     </bean>
 
-    <bean id="activitiProcessParseHandler" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiProcessParseHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiCallActivityParseHandler" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiCallActivityParseHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiUserTaskParseHandler" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiUserTaskParseHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- -->
     <!-- Activiti Process Engine -->
     <!-- -->
-    <bean id="activitiProcessEngineConfiguration"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiProcessEngineConfiguration" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiProcessEngine" class="ru.atum.alfresco.ecm.Dummy">
+    <bean id="activitiProcessEngine" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    </bean>
-<!--
-    <util:map id="activitiBeanRegistry" map-class="java.util.HashMap">
-        <entry key="services" value-ref="ServiceRegistry" />
-    </util:map>
--->
-    <bean id="baseJavaDelegate" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="baseJavaDelegate" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="baseExecutionListener" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="baseExecutionListener" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Workflow Engine Factory -->
-    <bean id="activitiWorkflowManager" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiWorkflowManager" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Workflow Engine -->
-    <bean id="activitiWorkflowEngine"  class="ru.atum.alfresco.ecm.Dummy"/>
+    <bean id="activitiWorkflowEngine" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Property Converter -->
-    <bean id="activitiPropertyConverter" class="ru.atum.alfresco.ecm.Dummy" />
+    <bean id="activitiPropertyConverter" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Node Converter -->
-    <bean id="activitiNodeConverter" class="ru.atum.alfresco.ecm.Dummy" />
+    <bean id="activitiNodeConverter" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Workflow Authority Manager -->
-    <bean id="workflowAuthorityManager" class="ru.atum.alfresco.ecm.Dummy" />
+    <bean id="workflowAuthorityManager" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Property Handler Registry -->
-    <bean id="activitiPropertyHandlerRegistry" class="ru.atum.alfresco.ecm.Dummy" />
+    <bean id="activitiPropertyHandlerRegistry" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- -->
     <!-- Property Handlers -->
     <!-- -->
 
     <!-- Activiti Base Property Handler -->
-    <bean id="activitiPropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiPropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Description Property Handler -->
-    <bean id="activitiDescriptionPropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy"
-           />
+    <bean id="activitiDescriptionPropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Owner Property Handler -->
-    <bean id="activitiOwnerPropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy"
-           />
+    <bean id="activitiOwnerPropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Package Property Handler -->
-    <bean id="activitiPackagePropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy"
-          >
-    </bean>
+    <bean id="activitiPackagePropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Pooled Actors Property Handler -->
-    <bean id="activitiPooledActorsPropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiPooledActorsPropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Priority Property Handler -->
-    <bean id="activitiPriorityPropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy"
-          />
+    <bean id="activitiPriorityPropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Activiti Due Date Property Handler -->
-    <bean id="activitiDueDatePropertyHandler"
-          class="ru.atum.alfresco.ecm.Dummy"/>
+    <bean id="activitiDueDatePropertyHandler" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <!-- Listeners for all activiti-tasks in alfresco -->
-    <bean id="activitiCompleteTaskListener"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiCompleteTaskListener" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiCreateTaskListener"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiCreateTaskListener" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiTaskNotificationListener"
-          class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiTaskNotificationListener" class="ru.atum.alfresco.ecm.Dummy"/>
 
-    <bean id="activitiProcessCreateListener" class="ru.atum.alfresco.ecm.Dummy">
-    </bean>
+    <bean id="activitiProcessCreateListener" class="ru.atum.alfresco.ecm.Dummy"/>
 
     <bean id="activitiRepositoryService" class="ru.atum.alfresco.ecm.Dummy"/>
     <bean id="activitiRuntimeService" class="ru.atum.alfresco.ecm.Dummy"/>
-    <bean id="activitiTaskService" class="ru.atum.alfresco.ecm.Dummy" />
-    <bean id="activitiManagementService"  class="ru.atum.alfresco.ecm.Dummy"/>
-    <bean id="activitiHistoryService" class="ru.atum.alfresco.ecm.Dummy" />
+    <bean id="activitiTaskService" class="ru.atum.alfresco.ecm.Dummy"/>
+    <bean id="activitiManagementService" class="ru.atum.alfresco.ecm.Dummy"/>
+    <bean id="activitiHistoryService" class="ru.atum.alfresco.ecm.Dummy"/>
 
 
 </beans>

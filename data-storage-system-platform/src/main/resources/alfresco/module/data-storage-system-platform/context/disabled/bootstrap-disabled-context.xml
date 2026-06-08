@@ -8,6 +8,54 @@
     <bean id="activitiEngineInitializer" class="ru.atum.alfresco.ecm.Dummy">
     </bean>
 
-<!--    <import resource="classpath:alfresco/module/${project.artifactId}/context/disabled/public-rest-context.xml" />-->
+    <!-- ensure that the schema is bootstrapped -->
+    <bean id="schemaBootstrap" class="ru.atum.alfresco.ecm.domain.schema.SchemaBootstrap" >
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="databaseMetaDataHelper">
+            <ref bean="databaseMetaDataHelper" />
+        </property>
+        <property name="appliedPatchDAO">
+            <ref bean="appliedPatchDAO"/>
+        </property>
+        <property name="descriptorService">
+            <ref bean="descriptorComponent"/>
+        </property>
+        <property name="dialect">
+            <ref bean="dialect" />
+        </property>
+        <property name="maximumStringLength">
+            <value>${system.maximumStringLength}</value>
+        </property>
+        <property name="dbSchemaName">
+            <value>${db.schema.name}</value>
+        </property>
+        <property name="updateSchema">
+            <value>${db.schema.update}</value>
+        </property>
+        <property name="stopAfterSchemaBootstrap">
+            <value>${db.schema.stopAfterSchemaBootstrap}</value>
+        </property>
+        <property name="schemaUpdateLockRetryCount">
+            <value>${db.schema.update.lockRetryCount}</value>
+        </property>
+        <property name="schemaUpdateLockRetryWaitSeconds">
+            <value>${db.schema.update.lockRetryWaitSeconds}</value>
+        </property>
+        <property name="globalProperties">
+            <ref bean="global-properties" />
+        </property>
+        <property name="schemaReferenceUrls">
+            <list>
+                <value>classpath:alfresco/dbscripts/create/${db.script.dialect}/Schema-Reference-ALF.xml</value>
+                <value>classpath:alfresco/dbscripts/create/${db.script.dialect}/Schema-Reference-ACT.xml</value>
+            </list>
+        </property>
+        <property name="differenceHelper">
+            <ref bean="differenceHelper" />
+        </property>
+    </bean>
+
 
 </beans>
