@@ -5,6 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <import resource="classpath:alfresco/extension/custom-web-scripts-application-context.xml"/>
+
     <!-- убрал только зависимость на resetPasswordService -->
     <bean id="people" class="ru.atum.alfresco.ecm.rest.api.impl.PeopleImpl">
         <property name="nodes" ref="Nodes"/>

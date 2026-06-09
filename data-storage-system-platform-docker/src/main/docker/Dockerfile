@@ -17,6 +17,7 @@ RUN java -jar $TOMCAT_DIR/alfresco-mmt/alfresco-mmt*.jar install \
 
 COPY alfresco-global.properties $TOMCAT_DIR/shared/classes/alfresco-global.properties
 COPY config/custom-web-context.xml $TOMCAT_DIR/shared/classes/alfresco/extension/custom-web-context.xml
+COPY config/custom-web-scripts-application-context.xml $TOMCAT_DIR/shared/classes/alfresco/extension/custom-web-scripts-application-context.xml
 
 COPY dev-log4j2.properties $TOMCAT_DIR/shared/classes/alfresco/extension/dev-log4j2.properties
 COPY disable-webscript-caching-context.xml $TOMCAT_DIR/shared/classes/alfresco/extension
